@@ -6,9 +6,11 @@ APP_LINKERS:= -L$(HOME)/VulkanSDK/1.3.283.0/macOS/lib -Wl,-rpath,$(HOME)/VulkanS
 APP_INCLUDES:= -I$(HOME)/VulkanSDK/1.3.283.0/macOS/include -I/opt/homebrew/Cellar/glfw/3.4/include -I/opt/homebrew/Cellar/glm/1.0.1/include
 APP_CPP_FILES = main.cpp
 
-all: buildClient
+all: buildClient run
 
 buildClient:
 	clang++ -std=c++20 $(APP_CPP_FILES) -o $(BUILD_DIR)/$(APP_NAME) $(APP_LINKERS) $(APP_INCLUDES)
 debug:
 	clang++ -v -std=c++20 $(APP_CPP_FILES) -o $(BUILD_DIR)/$(APP_NAME) $(APP_LINKERS) $(APP_INCLUDES)
+run:
+	$(BUILD_DIR)/$(APP_NAME)
